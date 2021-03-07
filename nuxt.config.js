@@ -2,8 +2,8 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   server: {
-    host: '45.12.18.115',
-    port: 3005
+    host: process.env.HOST,
+    port: process.env.PORT
   },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -46,6 +46,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/dotenv'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

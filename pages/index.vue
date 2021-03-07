@@ -3,8 +3,18 @@
     <section id="head">
       <v-container fluid class="video__container">
         <video src="../assets/video.webm" loop muted autoplay></video>
-        <v-btn href="#" large color="primary">Связаться с нами</v-btn>
-        <p>Очень крутой мотивирующий текст</p>
+        <div class="video__content">
+          <v-btn
+            href="#"
+            x-large
+            color="red darken-1"
+            class="white--text"
+            depressed
+            rounded
+            >Связаться с нами</v-btn
+          >
+          <p>Очень крутой мотивирующий текст</p>
+        </div>
       </v-container>
     </section>
 
@@ -146,17 +156,17 @@
                 <v-row class="mt-4">
                   <v-col>
                     <v-btn icon href="#">
-                      <v-icon large> mdi-instagram </v-icon>
+                      <v-icon large color="#E1306C"> mdi-instagram </v-icon>
                     </v-btn>
                   </v-col>
                   <v-col>
                     <v-btn icon href="#">
-                      <v-icon large> mdi-facebook </v-icon>
+                      <v-icon large color="#3b5998"> mdi-facebook </v-icon>
                     </v-btn>
                   </v-col>
                   <v-col>
                     <v-btn icon href="#">
-                      <v-icon large> mdi-telegram </v-icon>
+                      <v-icon large color="#0088cc"> mdi-telegram </v-icon>
                     </v-btn>
                   </v-col>
                 </v-row>
@@ -185,24 +195,23 @@ export default {
 
 <style>
 .video__container {
-  margin: auto;
   position: relative;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   width: 100%;
 }
 
 video {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
   height: 100vh;
   width: 100%;
-  z-index: 0;
   object-fit: cover;
+}
+
+.video__content {
+  text-align: center;
+  position: absolute;
 }
 
 .about__triangle {
@@ -261,6 +270,7 @@ form {
 }
 
 .contacts__card {
+  transform: translateY(-50%);
   max-width: 400px;
   margin-left: 200px;
 }
