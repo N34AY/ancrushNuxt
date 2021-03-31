@@ -1,283 +1,147 @@
-<template>
-  <div>
-    <section id="head">
-      <v-container fluid class="video__container">
-        <video src="../assets/video.webm" loop muted autoplay></video>
-        <div class="video__content">
-          <v-btn
-            href="#"
-            x-large
-            color="red darken-1"
-            class="white--text"
-            depressed
-            rounded
-            >Связаться с нами</v-btn
-          >
-          <p>Очень крутой мотивирующий текст</p>
-        </div>
-      </v-container>
-    </section>
+<template lang="pug">
+  v-container(  fluid class="gradient"  )
+    v-row( class="justify-center head" )
+      v-col( cols="auto" )
+        v-img( src="logo.png")
+      v-col( cols="auto" )
+        v-btn( 
+          href="#"
+          elevation="0"
+          color="#fd97c0"
+          class="contact_btn" 
+          class="mt-4" 
+          tile
+          large
+        ) СВЯЗАТЬСЯ
+    v-row( class="justify-center about")
+      v-col( cols="12" class="white--text about_text" )
+        v-img( 
+          src="chat.png"
+          width="200"
+          class="mt-4 mx-auto"
+        )
+        h1( class="text-uppercase text-h6 pb-2" ) ANCRUSH
+        h2( class="text-uppercase text-subtitle-2 pb-4" ) DATING AGENCY
+        p( class="text-caption px-6" ) Международное брачное агентство Ancrush ищет и находит, обьеденяет и радует, вдохновляет и создает самые крепкие и любящие пары по всему земному шару.
+        p( class="text-caption px-6" ) Сотрудники агентства рады иметь возможность каждый день искать для наших клиенток и клиентов их судьбу и любовь.
+    v-row( class="justify-center girls" )
+      v-col
+        p( class="text-caption px-14 pb-8" ) Наше агентство поможет тебе найти мужчину твоей мечты! Мы сопроводим тебя на всем этом пути, от создания анкеты, до реальной встречи
+        v-img( src="dream.png" class="justify-center align-center" )
+          p( class="text-uppercase dream_text" ) МЕЧТАЕШЬ ВЫЙТИ ЗАМУЖ ЗА ИНОСТРАНЦА?
+    v-row( class="justify-space-between px-4 pt-10 steps" )
+      v-col( cols="3" )
+        v-img( class="step_img" src="photosession.png" )
+        p Фотосессия
+      v-col( cols="3" )
+        v-img( class="step_img" src="cvcreation.png" )
+        p Создание анкеты
+      v-col( cols="3" )
+        v-img( class="step_img" src="pickman.png" )
+        p Подбор жениха
+      v-col( cols="3" )
+        v-img( class="step_img" src="meeting.png" )
+        p Встреча
 
-    <section id="about">
-      <v-container fluid>
-        <v-row>
-          <v-col cols="7" class="about__text">
-            <h1 class="mb-10 text-h4">
-              Dramatically re-engineer transparent deliverables with
-              <span class="red--text text-h4">....</span>
-            </h1>
-            <p class="mb-4">
-              Efficiently morph standards compliant quality vectors through
-              high-quality interfaces. Credibly plagiarize low-risk high-yield
-              methods of empowerment whereas frictionless opportunities.
-              Globally plagiarize cross-platform content via standardized
-              results.
-            </p>
-            <p>
-              Continually seize bleeding-edge channels after sticky schemas.
-              Monotonectally supply compelling collaboration and idea-sharing.
-            </p>
-          </v-col>
-          <v-col cols="5">
-            <div class="about__triangle"></div>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
+    v-row( class="justify-center" )
+      div( class="purple darken-2 text-center our_vacancies_text" )
+        span( class="text-uppercase white--text text-h6" ) НАШИ ВАКАНСИИ
+    v-row( class="vacancies" )
+      v-col
 
-    <section id="girls">
-      <v-container fluid>
-        <v-img src="background.png" height="700">
-          <h1 class="girls_text text-center text-h4">
-            Continually evolve next-generation relationships
-          </h1>
-          <v-row class="girls_content text-center">
-            <v-col cols="4">
-              <img src="left_icon.png" alt="" />
-              <h3>Continually utilize quality</h3>
-              <p>
-                Dynamically deliver functional paradigms whereas reliable
-                strategic theme areas. Monotonectally fabricate competitive
-                models via team.
-              </p>
-            </v-col>
-
-            <v-col cols="4">
-              <img src="center_icon.png" alt="" />
-              <h3>Continually utilize quality</h3>
-              <p>
-                Dynamically deliver functional paradigms whereas reliable
-                strategic theme areas. Monotonectally fabricate competitive
-                models via team.
-              </p>
-            </v-col>
-
-            <v-col cols="4">
-              <img src="right_icon.png" alt="" />
-              <h3>Continually utilize quality</h3>
-              <p>
-                Dynamically deliver functional paradigms whereas reliable
-                strategic theme areas. Monotonectally fabricate competitive
-                models via team.
-              </p>
-            </v-col>
-          </v-row>
-        </v-img>
-      </v-container>
-    </section>
-
-    <section id="vacancies">
-      <v-container fluid>
-        <v-row>
-          <v-col cols="5" class="vacancies__image">
-            <div class="figure">
-              <img src="macbook.png" alt="" />
-            </div>
-          </v-col>
-          <v-col cols="7" class="vacancies__text">
-            <h1 class="mb-10 text-h4">
-              Dramatically re-engineer transparent deliverables with
-              <span class="red--text text-h4">....</span>
-            </h1>
-            <p class="mb-4">
-              Efficiently morph standards compliant quality vectors through
-              high-quality interfaces. Credibly plagiarize low-risk high-yield
-              methods of empowerment whereas frictionless opportunities.
-              Globally plagiarize cross-platform content via standardized
-              results.
-            </p>
-            <p>
-              Continually seize bleeding-edge channels after sticky schemas.
-              Monotonectally supply compelling collaboration and idea-sharing.
-            </p>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
-
-    <section id="application">
-      <v-container fluid>
-        <Application />
-      </v-container>
-    </section>
-
-    <section id="contacts">
-      <v-container fluid>
-        <v-row>
-          <v-col
-            cols="6"
-            style="padding: 140px"
-            class="white--text font-weight-bold"
-          >
-            <h1 class="mb-10 text-h2 text-uppercase">Get in touch</h1>
-            <p>
-              Continually seize bleeding-edge channels after sticky schemas.
-              Monotonectally supply compelling collaboration and idea-sharing.
-              Continually seize bleeding-edge channels after sticky schemas.
-            </p>
-            <p>
-              Continually seize bleeding-edge channels after sticky schemas.
-              Monotonectally supply compelling collaboration and idea-sharing.
-            </p>
-          </v-col>
-          <v-col cols="6">
-            <v-card elevation="2" class="contacts__card text-center">
-              <v-card-text>
-                <h1 class="mb-2 text-h6 text-uppercase">call us</h1>
-                <p>+380682281488</p>
-                <p>+380682281488</p>
-                <h1 class="mt-4 mb-2 text-h6 text-uppercase">location</h1>
-                <p>
-                  Continually seize bleeding-edge channels after sticky schemas.
-                  Monotonectally supply compelling collaboration and
-                  idea-sharing.
-                </p>
-                <h1 class="mt-4 text-h6 text-uppercase">social networks</h1>
-                <v-row class="mt-4">
-                  <v-col>
-                    <v-btn icon href="#">
-                      <v-icon large color="#E1306C"> mdi-instagram </v-icon>
-                    </v-btn>
-                  </v-col>
-                  <v-col>
-                    <v-btn icon href="#">
-                      <v-icon large color="#3b5998"> mdi-facebook </v-icon>
-                    </v-btn>
-                  </v-col>
-                  <v-col>
-                    <v-btn icon href="#">
-                      <v-icon large color="#0088cc"> mdi-telegram </v-icon>
-                    </v-btn>
-                  </v-col>
-                </v-row>
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
-  </div>
+        div( class="vacanices_bg" )
+          p( class="grow director")
+            <span class="dot purple"></span> Директор филиала
+      
 </template>
-
 <script>
-import Application from '~/components/Application.vue'
-
-export default {
-  components: {
-    Application,
-  },
-
-  data: function () {
-    return {}
-  },
-}
+export default {}
 </script>
 
 <style>
-.video__container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
+.gradient{
+  background: -webkit-linear-gradient(180deg, rgb(253, 193, 248), rgb(253, 154, 195), rgb(253, 194, 247));
+  background: -moz-linear-gradient(180deg, rgb(253, 193, 248), rgb(253, 154, 195), rgb(253, 194, 247));
+  background: linear-gradient(180deg, rgb(253, 193, 248), rgb(253, 154, 195), rgb(253, 194, 247));
 }
 
-video {
-  height: 100vh;
-  width: 100%;
-  object-fit: cover;
+.head {
+  padding-top: 120px;
+  padding-bottom: 160px;
 }
 
-.video__content {
+.contact_btn {
+  color: #412163 !important;
+}
+
+.about {
+  height: 620px;
+  background: url("../static/about_bg.png");
+  background-size:100% 100%
+}
+
+.about_text {
   text-align: center;
+}
+
+.girls {
+  padding-top: 100px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.dream_text {
+  line-height: 1;
+  letter-spacing: 3px;
+  font-size: 14px;
+  padding-top: 24px;
+  padding-left: 85px;
+  padding-right: 85px;
+}
+
+.steps {
+  text-align: center;
+  font-size: 12px;
+}
+
+.step_img {
+  width: 60px;
+  height: 60px;
+}
+
+.our_vacancies_text {
+  width: 200px;
+  margin-top: 140px;
+  margin-bottom: 80px;
+}
+
+.vacancies {
+  height: 620px;
+  background: url("../static/vacancies_bg.png");
+  background-size:100% 100%
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot .purple {
+  background-color: #561e68;
+}
+
+.dot .pnk{
+  background-color: #fdbaee;
+}
+
+.grow {
   position: absolute;
 }
 
-.about__triangle {
-  position: absolute;
-  right: 0;
-  margin-bottom: 0;
-  border-bottom: 700px solid #fb8686;
-  border-left: 700px solid transparent;
-}
-
-.about__text {
-  padding: 200px;
-}
-
-.girls_text {
-  position: relative;
-  top: 20%;
-  margin-bottom: 40px;
-}
-
-.girls_content {
-  position: relative;
-  top: 30%;
-  padding-left: 200px;
-  padding-right: 200px;
-}
-
-.figure {
-  width: 0;
-  height: 700px;
-  border-bottom: 700px solid #fb8686;
-  border-right: 700px solid transparent;
-}
-
-.figure img {
-  padding: 120px;
-}
-
-.vacancies__text {
-  padding: 220px;
-}
-
-#application {
-  background-color: #f6f5f3;
-}
-
-form {
-  padding-top: 60px;
-  max-width: 900px;
-  padding-left: 140px;
-  padding-bottom: 60px;
-}
-
-#contacts {
-  background-color: #dfa5c6;
-}
-
-.contacts__card {
-  transform: translateY(-50%);
-  max-width: 400px;
-  margin-left: 200px;
-}
-
-.contacts__card .row {
-  margin-left: 80px;
-  margin-right: 80px;
-  margin-bottom: 10px;
+.grow .director {
+  left: 17%;
+  bottom: 22%;
 }
 </style>

@@ -1,41 +1,46 @@
-<template>
-  <form @submit.prevent="submit">
-    <v-text-field
+<template lang="pug">
+  v-form( 
+    class="form" 
+    ref="form"
+    v-model="valid"
+    lazy-validation
+  )
+    v-text-field(
+      label="Ваше имя"
       v-model="name"
-      label="Your name"
-      :rules="validation.name"
+      :rules="nameRules"
       required
-    ></v-text-field>
-    <v-text-field v-model="email" label="Your email" required></v-text-field>
-    <v-textarea
+    )
+    v-text-field(
+      label="Ваш Email" 
+      v-model="email" 
+      :rules="emailRules"
+      required
+    )
+    v-textarea(
+      label="Ваше сообщение"
       v-model="other"
-      label="Your message"
       no-resize
       rows="3"
       row-height="25"
       counter
-      :rules="validation.other"
       required
-    ></v-textarea>
-    <v-radio-group v-model="type" mandatory row>
-      <template v-slot:label>
-        <div>Выберите тип <strong>заявки</strong></div>
-      </template>
-      <v-radio
+    )
+    v-radio-group( v-model="type" mandatory row )
+      template( v-slot:label )
+        div Выберите тип 
+          strong заявки
+      v-radio(
         label="Заявка на вакансию"
         value="работа"
         color="blue"
-      ></v-radio>
-      <v-radio
+      )
+      v-radio(
         label="Заявка на анкету"
         value="анкета"
         color="success"
-      ></v-radio>
-    </v-radio-group>
-    <v-btn rounded large @click="send" color="#AA00FF" class="white--text">
-      Оставить заявку
-    </v-btn>
-  </form>
+      )
+    v-btn( rounded large @click="validate" :disabled="!valid" color="#AA00FF" class="white--text" ) Оставить заявку
 </template>
 
 <script>
@@ -53,19 +58,24 @@ export default {
 
   data: function () {
     return {
-      validation: {
-        name: [(v) => v.length <= 30 || 'Имя слишком длинное'],
-        email: [(v) => v.length <= 40 || 'Почта слишком длинная'],
-        other: [(v) => v.length <= 150 || 'Max 150 characters'],
-      },
+      valid: true,
       name: '',
+      nameRules: [ v => !!v || 'Имя обязательно!' ],
       email: '',
+      emailRules: [
+        v => !!v || 'E-mail обязателен!',
+        v => /.+@.+\..+/.test(v) || 'Введите корректный E-mail',
+      ],
       other: '',
-      type: '',
+      type: ''
     }
   },
 
   methods: {
+    validate: async function () {
+      let valid = this.$refs.form.validate()
+      if (valid) this.send()
+    },
     send: async function () {
       let emoji = (this.type == 'анкета') ? '\ud83d\udc69' : '\ud83d\udcbb'
       let type = `${this.type} ${emoji}`
@@ -78,4 +88,7 @@ export default {
 </script>
 
 <style>
+@media screen and (max-device-width: 1500px) {
+  .form {max-width: 650px;}
+}
 </style>
