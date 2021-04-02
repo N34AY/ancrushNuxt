@@ -1,5 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
-
 export default {
   server: {
     host: process.env.HOST,
@@ -13,7 +11,7 @@ export default {
     titleTemplate: '%s - ancrush',
     title: 'ancrush',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ru'
     },
     meta: [
       { charset: 'utf-8' },
@@ -21,7 +19,10 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: "preconnect", href: "https://fonts.gstatic.com" },
+      { href: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap", rel: "stylesheet" },
+      { href: "https://fonts.googleapis.com/css2?family=PT+Sans&display=swap", rel: "stylesheet" }
     ]
   },
 
@@ -54,21 +55,9 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
+    treeShake: true,
+    defaultAssets: false,
     customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: false,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
