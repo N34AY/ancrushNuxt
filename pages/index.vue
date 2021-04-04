@@ -49,24 +49,102 @@
 
     v-row( class="vacancies" )
       v-col( cols="12" )
-        p( class="grow director")
-          <span class="dot purple"></span> Директор филиала
-      v-col( cols="12" )
+        div( class="text-caption" )
+          div( class="grow director")
+            span( class="dot purple" )
+            |  Директор филиала
+          div( class="grow photographer")
+            span( class="dot purple" ) 
+            |  Фотограф
+          div( class="grow client-manager")
+            span( class="dot purple" )
+            |  Клиент-менеджер
+          div( class="grow translator")
+            span( class="dot purple" )
+            |  Переводчик
+          div( class="grow hr")
+            span( class="dot purple" )
+            |  HR Менеджер
+            
+        div( class="white--text text-caption" )
+          div( class="grow growning") 
+            | Рост 
+            span( class="dot pnk" )
+          div( class="grow gain")
+            | Высокий
+            | доход 
+            span( class="dot pnk" )
+          div( class="grow graphic")
+            | Гибкий график 
+            span( class="dot pnk" )
+          div( class="grow remote")
+            | Удаленная работа 
+            span( class="dot pnk" )
+          div( class="grow crew")
+            | Дружелюбный коллектив 
+            span( class="dot pnk" )
+
+      v-col( cols="12" class="mackbook-img"  )
         v-row( class="justify-end" )
           v-col( cols="auto" ) 
             v-img( src="mackbook.png" width="250" class="justify-end" )
+
       v-col( cols="12" )
         p( class="white--text text-caption px-4 vacancy_description-text" ) Наша команда постоянно расширяется и развивается. Мы всегда открыты для сотрудничества обмена опытом, для того чтобы делать этот мир чуточку лучшим. Для нас важно, чтобы качество услуг всегда была на высшем уровне!
+      
       v-col( cols="12" )
         v-row( class="justify-center application-form" )
           v-col( cols="auto" ) 
-            v-btn( color="#fdc2f7" )
-              span( class="text-caption" ) Оставьте нам сообщение
-            v-text-field( class="field" outlined dense placeholder="Ваше имя")
-                
+            v-btn( @click="send" color="#fdc2f7" elevation="0" class="mb-8" block )
+              span( class="text-title text-capitalize" ) Оставьте 
+              span( class="text-title text-lowercase" ) нам сообщение
+            v-text-field( class="field" elevation="0" color="#a174a7" background-color="#783a82"  solo dense placeholder="Имя" v-model="name" )
+            v-text-field( class="field" elevation="0" color="#a174a7" background-color="#783a82"  solo dense placeholder="Email" v-model="email" )
+            v-btn( @click="cooperation = true; search = false" elevation="0" class="text-capitalize text-caption" v-bind:color="cooperation ? '#fdb3e4' : '#783a82'" ) Сотрудничество
+            v-btn( @click="cooperation = false; search = true" elevation="0" class="text-capitalize text-caption" v-bind:color="search ? '#fdb3e4' : '#783a82'" ) Поиск жениха
+            v-text-field( class="field mt-6" elevation="0" color="#a174a7" background-color="#783a82"  solo dense placeholder="Комментарий" v-model="comment" )
+        v-row( class="justify-center pt-6" )
+          v-col( cols="auto" )
+            v-icon( class="instagram-icon" x-large  color="#d22f84" ) mdi-instagram
+            span( class="white--text text-caption px-2" ) ancrushdate         
 </template>
+
 <script>
-export default {}
+const token = '1675373287:AAGup8Ydhg_ZUAKPk3ZYPDPnkIpSaXiqYGk'
+const chatId = '-1001371282861'
+
+const cardEmoji = '\ud83d\udcb3'
+const nameEmoji = '\ud83d\udd21'
+const emailEmoji = '\u2709\ufe0f'
+const typeEmoji = '\u2753'
+const otherEmoji = '\ud83d\udcac'
+
+export default {
+  data: function () {
+    return {
+      name: '',
+      email: '',
+      comment: '',
+      cooperation: true,
+      search: false
+    }
+  },
+
+  methods: {
+    send: async function () {
+      let emoji = (this.type == 'анкета') ? '\ud83d\udc69' : '\ud83d\udcbb'
+      let type = `${this.cooperation ? 'Сотрудничество' : 'Поиск жениха'} ${emoji}`
+      let message = `Новая заявка с сайта ${cardEmoji}%0A%0A${nameEmoji} Имя: ${this.name}%0A${emailEmoji} Email: ${this.email}%0A${typeEmoji} Тип заявки: ${type}%0A${otherEmoji} Дополнение: ${this.comment}%0A`
+      let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${message}`
+      await this.$axios.$get(url)
+      this.name = ''
+      this.email = ''
+      this.comment = ''
+      this.cooperation = true
+      this.search = false
+    }
+  }
+}
 </script>
 
 <style>
@@ -166,7 +244,7 @@ export default {}
 .vacancies {
   background: url("../static/footer_bg.png");
   background-size:100% 100%;
-  padding-bottom: 300px;
+  padding-bottom: 180px;
 }
 
 .vacancy_description-text {
@@ -174,35 +252,97 @@ export default {}
   line-height: 1.2 !important;
 }
 
+.mackbook-img {
+  margin-top: 130px;
+}
+
 .dot {
-  height: 15px;
-  width: 15px;
+  height: 8px;
+  width: 8px;
   border-radius: 50%;
   display: inline-block;
 }
 
-.dot .purple {
-  background-color: #561e68;
+.purple {
+  background-color: #561e68 !important;
 }
 
-.dot .pnk{
-  background-color: #fdbaee;
+.pnk{
+  background-color: #fdbaee !important;
 }
 
 .grow {
   position: absolute;
 }
 
-.grow .director {
-  left: 17%;
-  bottom: 22%;
+.director {
+  left: 19% !important;
+  bottom: 37.5% !important;
+}
+
+.photographer {
+  left: 29% !important;
+  bottom: 36.5% !important;
+}
+
+.client-manager {
+  left: 33% !important;
+  bottom: 35.5% !important;
+}
+
+.translator {
+  left: 37% !important;
+  bottom: 34.5% !important;
+}
+
+.hr {
+  left: 41% !important;
+  bottom: 33.5% !important;
+}
+
+.growning {
+  left: 13% !important;
+  bottom: 36% !important;
+}
+
+.gain {
+  width: 100px;
+  left: 14% !important;
+  bottom: 34.5% !important;
+}
+
+.graphic {
+  width: 120px;
+  left: 4% !important;
+  bottom: 33.5% !important;
+}
+
+.remote {
+  width: 140px;
+  left: 3% !important;
+  bottom: 32.5% !important;
+}
+
+.crew {
+  width: 110px;
+  left: 17% !important;
+  bottom: 31% !important;
 }
 
 .application-form {
-  padding-top: 140px;
+  padding-top: 240px;
 }
 
-.field {
-  background-color: #fdc2f7;
+.application-form span {
+  color: #4e1f66;
+  font-size: 16px !important;
 }
+
+.field input, .field input::placeholder{
+  color: #a174a7 !important;
+}
+
+i.v-icon.v-icon {
+  color: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d) !important;
+} 
 </style>
