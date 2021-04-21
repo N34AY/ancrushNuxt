@@ -1,115 +1,121 @@
 <template lang="pug">
-  v-container(  fluid class="gradient"  )
-    v-row( class="justify-center head" )
-      v-col( cols="12" )
-        v-img( src="logo.png" )
-      v-col( cols="auto" )
-        v-btn( 
-          href="#"
-          elevation="0"
-          color="#fd97c0"
-          class="mt-4 contact_btn" 
-          tile
+v-container.gradient(fluid)
+  .head
+    v-row.justify-center
+      v-col(cols='auto')
+        v-img(src='logo.png', max-width='700px')
+    v-row.justify-center
+      v-col(cols='auto')
+        v-btn.mt-4.contact_btn(
+          href='#',
+          elevation='0',
+          color='#fd97c0',
+          tile,
           large
         ) 
-          span( title class="px-4" ) СВЯЗАТЬСЯ
-    v-row( class="justify-center about")
-      v-col( cols="12" class="white--text about_text" )
-        v-img( 
-          src="chat.png"
-          width="200"
-          class="mt-4 mx-auto"
-        )
-        h1( class="text-uppercase pb-2 pt-6" ) ANCRUSH
-        h2( class="text-uppercase pb-6" ) DATING AGENCY
-        p( class="text-caption px-4" ) Международное брачное агентство Ancrush ищет и находит, обьеденяет и радует, вдохновляет и создает самые крепкие и любящие пары по всему земному шару.
-        p( class="text-caption px-2" ) Сотрудники агентства рады иметь возможность каждый день искать для наших клиенток и клиентов их судьбу и любовь.
-    v-row( class="justify-center girls" )
-      v-col
-        p( class="text-caption text-sm-body-2 our_agency-text px-10 pb-8" ) Наше агентство поможет тебе найти мужчину твоей мечты! Мы сопроводим тебя на всем этом пути, от создания анкеты, до реальной встречи
-        v-img( src="dream.png" class="justify-center align-center" )
-          p( class="text-uppercase dream-text" ) МЕЧТАЕШЬ ВЫЙТИ ЗАМУЖ ЗА ИНОСТРАНЦА?
-    v-row( class="justify-space-between px-4 pt-6 steps" )
-      v-col( cols="3" )
-        v-img( class="step_img" src="photosession.png" )
-        p Фотосессия
-      v-col( cols="3" )
-        v-img( class="step_img" src="cvcreation.png" )
-        p Создание анкеты
-      v-col( cols="3" )
-        v-img( class="step_img" src="pickman.png" )
-        p Подбор жениха
-      v-col( cols="3" )
-        v-img( class="step_img" src="meeting.png" )
-        p Встреча
+          span.px-4(title) СВЯЗАТЬСЯ
+  v-row.justify-center.align-center.about 
+    v-col(xs='4', sm='6', lg='4', xl='4')
+      v-img#phone.mt-4.mx-auto(
+        src='chat.png',
+        max-width='350',
+        min-width='200'
+      )
+    v-col.white--text.about_text(xs='4', sm='6', lg='4', xl='4')
+      h1.text-uppercase.pb-2.pt-6 ANCRUSH
+      h2.text-uppercase.pb-6 DATING AGENCY
+      p.text-caption.px-4 Международное брачное агентство Ancrush ищет и находит, обьеденяет и радует, вдохновляет и создает самые крепкие и любящие пары по всему земному шару.
+      p.text-caption.px-2 Сотрудники агентства рады иметь возможность каждый день искать для наших клиенток и клиентов их судьбу и любовь.
 
-    v-row( class="justify-center" )
-      div( class="purple darken-2 text-center our_vacancies" )
-        span( class="text-uppercase white--text title" ) НАШИ ВАКАНСИИ
+  v-row.justify-center.girls.align-center
+    v-col(xs='4', sm='6', lg='4', xl='4')
+      p.text-caption.text-sm-body-2.our_agency-text.px-10.pb-8 Наше агентство поможет тебе найти мужчину твоей мечты! Мы сопроводим тебя на всем этом пути, от создания анкеты, до реальной встречи
+    v-col(xs='4', sm='6', lg='4', xl='4')
+      v-img.justify-center.align-center(src='dream.png', max-width='650')
+        p.text-uppercase.dream-text МЕЧТАЕШЬ ВЫЙТИ ЗАМУЖ ЗА ИНОСТРАНЦА?
 
-    v-row( class="vacancies" )
-      v-col( cols="12" )
-        div( class="text-caption" )
-          div( class="grow director")
-            span( class="dot purple" )
-            |  Директор филиала
-          div( class="grow photographer")
-            span( class="dot purple" ) 
-            |  Фотограф
-          div( class="grow client-manager")
-            span( class="dot purple" )
-            |  Клиент-менеджер
-          div( class="grow translator")
-            span( class="dot purple" )
-            |  Переводчик
-          div( class="grow hr")
-            span( class="dot purple" )
-            |  HR Менеджер
-            
-        div( class="white--text text-caption" )
-          div( class="grow growning") 
-            | Рост 
-            span( class="dot pnk" )
-          div( class="grow gain")
-            | Высокий
-            | доход 
-            span( class="dot pnk" )
-          div( class="grow graphic")
-            | Гибкий график 
-            span( class="dot pnk" )
-          div( class="grow remote")
-            | Удаленная работа 
-            span( class="dot pnk" )
-          div( class="grow crew")
-            | Дружелюбный коллектив 
-            span( class="dot pnk" )
+  v-row.justify-space-between.text-center.px-4.steps
+    v-col.align-center(cols='3')
+      v-img.mx-auto.step_img(src='photosession.png')
+      p Фотосессия
+    v-col(cols='3')
+      v-img.mx-auto.step_img(src='cvcreation.png')
+      p Создание анкеты
+    v-col(cols='3')
+      v-img.mx-auto.step_img(src='pickman.png')
+      p Подбор жениха
+    v-col(cols='3')
+      v-img.mx-auto.step_img(src='meeting.png')
+      p Встреча
 
-      v-col( cols="12" class="mackbook-img"  )
-        v-row( class="justify-end" )
-          v-col( cols="auto" ) 
-            v-img( src="mackbook.png" width="250" class="justify-end" )
+  v-row.justify-center
+    .purple.darken-2.text-center.our_vacancies
+      span.text-uppercase.white--text.title НАШИ ВАКАНСИИ
 
-      v-col( cols="12" )
-        p( class="white--text text-caption px-4 vacancy_description-text" ) Наша команда постоянно расширяется и развивается. Мы всегда открыты для сотрудничества обмена опытом, для того чтобы делать этот мир чуточку лучшим. Для нас важно, чтобы качество услуг всегда была на высшем уровне!
-      
-      v-col( cols="12" )
-        v-row( class="justify-center application-form" )
-          v-col( cols="auto" ) 
-            v-btn( @click="send" color="#fdc2f7" elevation="0" class="mb-8" block )
-              span( class="text-title text-capitalize" ) Оставьте 
-              span( class="text-title text-lowercase" ) нам сообщение
-            v-text-field( class="field" elevation="0" color="#a174a7" background-color="#783a82"  solo dense placeholder="Имя" v-model="name" )
-            v-text-field( class="field" elevation="0" color="#a174a7" background-color="#783a82"  solo dense placeholder="Email" v-model="email" )
-            v-btn( @click="cooperation = true; search = false" elevation="0" class="text-capitalize text-caption" v-bind:color="cooperation ? '#fdb3e4' : '#783a82'" ) Сотрудничество
-            v-btn( @click="cooperation = false; search = true" elevation="0" class="text-capitalize text-caption" v-bind:color="search ? '#fdb3e4' : '#783a82'" ) Поиск жениха
-            v-text-field( class="field mt-6" elevation="0" color="#a174a7" background-color="#783a82"  solo dense placeholder="Комментарий" v-model="comment" )
-        v-row( class="justify-center pt-6" )
-          v-col( cols="auto" )
-            v-icon( class="instagram-icon" x-large  color="#d22f84" ) mdi-instagram
-            span( class="white--text text-caption px-2" ) ancrushdate         
+  v-row
+    v-col(xs='4', sm='6', lg='4', xl='4')
+      .text-caption
+        .grow.director
+          span.dot.purple
+          |
+          | Директор филиала
+        .grow.photographer
+          span.dot.purple 
+          |
+          | Фотограф
+        .grow.client-manager
+          span.dot.purple
+          |
+          | Клиент-менеджер
+        .grow.translator
+          span.dot.purple
+          |
+          | Переводчик
+        .grow.hr
+          span.dot.purple
+          |
+          | HR Менеджер
+
+      .white--text.text-caption
+        .grow.growning 
+          | Рост
+          span.dot.pnk
+        .grow.gain
+          | Высокий
+          | доход
+          span.dot.pnk
+        .grow.graphic
+          | Гибкий график
+          span.dot.pnk
+        .grow.remote
+          | Удаленная работа
+          span.dot.pnk
+        .grow.crew
+          | Дружелюбный коллектив
+          span.dot.pnk
+
+  v-row.justify-center.vacancies
+    v-col.mackbook-img(xs='12', sm='12', lg='12', xl='12')
+      v-row.justify-end
+        v-col(cols='auto') 
+          v-img.justify-end(src='mackbook.png', width='250')
+
+    v-col(xs='12', sm='12', lg='6', xl='6')
+      p.white--text.text-caption.px-4.vacancy_description-text Наша команда постоянно расширяется и развивается. Мы всегда открыты для сотрудничества обмена опытом, для того чтобы делать этот мир чуточку лучшим. Для нас важно, чтобы качество услуг всегда была на высшем уровне!
+
+    v-col(cols='12')
+      v-row.justify-center.application-form
+        v-col(cols='auto') 
+          Application
+      v-row.justify-center.pt-6
+        v-col(cols='auto')
+          v-icon.instagram-icon(x-large, color='#d22f84') mdi-instagram
+          span.white--text.text-caption.px-2 ancrushdate
 </template>
 
 <script>
+import Application from '~/components/Application'
+
 const token = '1675373287:AAGup8Ydhg_ZUAKPk3ZYPDPnkIpSaXiqYGk'
 const chatId = '-1001371282861'
 
@@ -120,38 +126,82 @@ const typeEmoji = '\u2753'
 const otherEmoji = '\ud83d\udcac'
 
 export default {
+  components: {
+    Application,
+  },
+
   data: function () {
     return {
       name: '',
       email: '',
       comment: '',
       cooperation: true,
-      search: false
+      search: false,
+      valid: true,
+      nameRules: [(v) => !!v || 'Имя обязательно'],
+      emailRules: [
+        (v) => !!v || 'E-mail обязателен',
+        (v) =>
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            v
+          ) || 'Некорректный E-mail',
+      ],
     }
   },
 
   methods: {
+    validate: async function () {
+      let valid = this.$refs.form.validate()
+      if (valid) await this.send()
+    },
     send: async function () {
-      let emoji = (this.type == 'анкета') ? '\ud83d\udc69' : '\ud83d\udcbb'
-      let type = `${this.cooperation ? 'Сотрудничество' : 'Поиск жениха'} ${emoji}`
+      let emoji = this.type == 'анкета' ? '\ud83d\udc69' : '\ud83d\udcbb'
+      let type = `${
+        this.cooperation ? 'Сотрудничество' : 'Поиск жениха'
+      } ${emoji}`
       let message = `Новая заявка с сайта ${cardEmoji}%0A%0A${nameEmoji} Имя: ${this.name}%0A${emailEmoji} Email: ${this.email}%0A${typeEmoji} Тип заявки: ${type}%0A${otherEmoji} Дополнение: ${this.comment}%0A`
       let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${message}`
       await this.$axios.$get(url)
-      this.name = ''
-      this.email = ''
-      this.comment = ''
-      this.cooperation = true
-      this.search = false
-    }
-  }
+      this.$refs.form.resetValidation()
+      this.$refs.form.reset()
+    },
+  },
 }
 </script>
 
 <style>
-.gradient{
-  background: -webkit-linear-gradient(180deg, rgb(253, 193, 248), rgb(253, 154, 195), rgb(253, 194, 247));
-  background: -moz-linear-gradient(180deg, rgb(253, 193, 248), rgb(253, 154, 195), rgb(253, 194, 247));
-  background: linear-gradient(180deg, rgb(253, 193, 248), rgb(253, 154, 195), rgb(253, 194, 247));
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #b729aa;
+  outline: 1px solid slategrey;
+}
+
+.gradient {
+  background: -webkit-linear-gradient(
+    180deg,
+    rgb(253, 193, 248),
+    rgb(253, 154, 195),
+    rgb(253, 194, 247)
+  );
+  background: -moz-linear-gradient(
+    180deg,
+    rgb(253, 193, 248),
+    rgb(253, 154, 195),
+    rgb(253, 194, 247)
+  );
+  background: linear-gradient(
+    180deg,
+    rgb(253, 193, 248),
+    rgb(253, 154, 195),
+    rgb(253, 194, 247)
+  );
 }
 
 .head {
@@ -169,8 +219,8 @@ export default {
 
 .about {
   /* height: 620px; */
-  background: url("../static/about_bg.png");
-  background-size: 100% 100%
+  background: url('../static/about_bg.png');
+  background-size: 100% 100%;
 }
 
 .about_text {
@@ -237,13 +287,13 @@ export default {
   margin-bottom: 80px;
 }
 
-.our_vacancies span{
+.our_vacancies span {
   font-size: 50px;
 }
 
 .vacancies {
-  background: url("../static/footer_bg.png");
-  background-size:100% 100%;
+  background: url('../static/footer_bg.png');
+  background-size: 100% 100%;
   padding-bottom: 180px;
 }
 
@@ -267,7 +317,7 @@ export default {
   background-color: #561e68 !important;
 }
 
-.pnk{
+.pnk {
   background-color: #fdbaee !important;
 }
 
@@ -277,72 +327,408 @@ export default {
 
 .director {
   left: 19% !important;
-  bottom: 37.5% !important;
+  bottom: 36% !important;
 }
 
 .photographer {
   left: 29% !important;
-  bottom: 36.5% !important;
+  bottom: 35% !important;
 }
 
 .client-manager {
   left: 33% !important;
-  bottom: 35.5% !important;
+  bottom: 34% !important;
 }
 
 .translator {
   left: 37% !important;
-  bottom: 34.5% !important;
+  bottom: 33% !important;
 }
 
 .hr {
   left: 41% !important;
-  bottom: 33.5% !important;
+  bottom: 32% !important;
 }
 
 .growning {
   left: 13% !important;
-  bottom: 36% !important;
+  bottom: 34.5% !important;
 }
 
 .gain {
   width: 100px;
   left: 14% !important;
-  bottom: 34.5% !important;
+  bottom: 33.5% !important;
 }
 
 .graphic {
   width: 120px;
   left: 4% !important;
-  bottom: 33.5% !important;
+  bottom: 32.5% !important;
 }
 
 .remote {
   width: 140px;
   left: 3% !important;
-  bottom: 32.5% !important;
+  bottom: 31.5% !important;
 }
 
 .crew {
   width: 110px;
   left: 17% !important;
-  bottom: 31% !important;
+  bottom: 30% !important;
 }
 
-.application-form {
-  padding-top: 240px;
+@media (max-width: 320px) {
+  .grow {
+    display: none;
+  }
+}
+@media (min-width: 375px) and (max-width: 420px) {
+  .director {
+    left: 19% !important;
+    bottom: 36% !important;
+  }
+
+  .photographer {
+    left: 29% !important;
+    bottom: 35% !important;
+  }
+
+  .client-manager {
+    left: 33% !important;
+    bottom: 34% !important;
+  }
+
+  .translator {
+    left: 37% !important;
+    bottom: 33% !important;
+  }
+
+  .hr {
+    left: 41% !important;
+    bottom: 32% !important;
+  }
+
+  .growning {
+    left: 13% !important;
+    bottom: 34% !important;
+  }
+
+  .gain {
+    width: 100px;
+    left: 13% !important;
+    bottom: 32.5% !important;
+  }
+
+  .graphic {
+    width: 120px;
+    left: 9% !important;
+    bottom: 31.5% !important;
+  }
+
+  .remote {
+    width: 140px;
+    left: 7% !important;
+    bottom: 30.5% !important;
+  }
+
+  .crew {
+    width: 110px;
+    left: 20% !important;
+    bottom: 29% !important;
+  }
 }
 
-.application-form span {
-  color: #4e1f66;
-  font-size: 16px !important;
+@media (min-width: 420px) and (max-width: 500px) {
+  .director {
+    left: 19% !important;
+    bottom: 35% !important;
+  }
+
+  .photographer {
+    left: 29% !important;
+    bottom: 34% !important;
+  }
+
+  .client-manager {
+    left: 33% !important;
+    bottom: 33% !important;
+  }
+
+  .translator {
+    left: 37% !important;
+    bottom: 32% !important;
+  }
+
+  .hr {
+    left: 41% !important;
+    bottom: 31% !important;
+  }
+
+  .growning {
+    left: 15% !important;
+    bottom: 33% !important;
+  }
+
+  .gain {
+    width: 200px;
+    left: 5% !important;
+    bottom: 32% !important;
+  }
+
+  .graphic {
+    width: 120px;
+    left: 10% !important;
+    bottom: 31% !important;
+  }
+
+  .remote {
+    width: 140px;
+    left: 8% !important;
+    bottom: 30% !important;
+  }
+
+  .crew {
+    width: 200px;
+    left: 1% !important;
+    bottom: 29% !important;
+  }
 }
 
-.field input, .field input::placeholder{
-  color: #a174a7 !important;
+@media (min-width: 500px) and (max-width: 544px) {
+  .director {
+    left: 19% !important;
+    bottom: 34% !important;
+  }
+
+  .photographer {
+    left: 29% !important;
+    bottom: 33% !important;
+  }
+
+  .client-manager {
+    left: 33% !important;
+    bottom: 32% !important;
+  }
+
+  .translator {
+    left: 37% !important;
+    bottom: 31% !important;
+  }
+
+  .hr {
+    left: 41% !important;
+    bottom: 30% !important;
+  }
+
+  .growning {
+    left: 15% !important;
+    bottom: 32% !important;
+  }
+
+  .gain {
+    width: 200px;
+    left: 5% !important;
+    bottom: 31% !important;
+  }
+
+  .graphic {
+    width: 120px;
+    left: 10% !important;
+    bottom: 30% !important;
+  }
+
+  .remote {
+    width: 140px;
+    left: 8% !important;
+    bottom: 29% !important;
+  }
+
+  .crew {
+    width: 200px;
+    left: 1% !important;
+    bottom: 28% !important;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 544px) {
+  .director {
+    left: 19% !important;
+    bottom: 34% !important;
+  }
+
+  .photographer {
+    left: 29% !important;
+    bottom: 33% !important;
+  }
+
+  .client-manager {
+    left: 33% !important;
+    bottom: 32% !important;
+  }
+
+  .translator {
+    left: 37% !important;
+    bottom: 31% !important;
+  }
+
+  .hr {
+    left: 41% !important;
+    bottom: 30% !important;
+  }
+
+  .growning {
+    left: 15% !important;
+    bottom: 32% !important;
+  }
+
+  .gain {
+    width: 200px;
+    left: 5% !important;
+    bottom: 31% !important;
+  }
+
+  .graphic {
+    width: 120px;
+    left: 10% !important;
+    bottom: 30% !important;
+  }
+
+  .remote {
+    width: 140px;
+    left: 8% !important;
+    bottom: 29% !important;
+  }
+
+  .crew {
+    width: 200px;
+    left: 1% !important;
+    bottom: 28% !important;
+  }
+}
+
+@media (min-width: 1366px) {
+  .director {
+    left: 19% !important;
+    bottom: 37% !important;
+  }
+
+  .photographer {
+    left: 29% !important;
+    bottom: 36% !important;
+  }
+
+  .client-manager {
+    left: 33% !important;
+    bottom: 35% !important;
+  }
+
+  .translator {
+    left: 37% !important;
+    bottom: 34% !important;
+  }
+
+  .hr {
+    left: 41% !important;
+    bottom: 33% !important;
+  }
+
+  .growning {
+    left: 17% !important;
+    bottom: 35% !important;
+  }
+
+  .gain {
+    width: 200px;
+    left: 18% !important;
+    bottom: 34% !important;
+  }
+
+  .graphic {
+    width: 120px;
+    left: 24% !important;
+    bottom: 33% !important;
+  }
+
+  .remote {
+    width: 140px;
+    left: 27% !important;
+    bottom: 32% !important;
+  }
+
+  .crew {
+    width: 200px;
+    left: 28% !important;
+    bottom: 31% !important;
+  }
+}
+
+@media (min-width: 1900px) {
+  .director {
+    left: 25% !important;
+    bottom: 35% !important;
+  }
+
+  .photographer {
+    left: 29% !important;
+    bottom: 34% !important;
+  }
+
+  .client-manager {
+    left: 33% !important;
+    bottom: 33% !important;
+  }
+
+  .translator {
+    left: 37% !important;
+    bottom: 32% !important;
+  }
+
+  .hr {
+    left: 41% !important;
+    bottom: 31% !important;
+  }
+
+  .growning {
+    left: 22% !important;
+    bottom: 33% !important;
+  }
+
+  .gain {
+    width: 200px;
+    left: 24% !important;
+    bottom: 32% !important;
+  }
+
+  .graphic {
+    width: 120px;
+    left: 28% !important;
+    bottom: 31% !important;
+  }
+
+  .remote {
+    width: 140px;
+    left: 31% !important;
+    bottom: 30% !important;
+  }
+
+  .crew {
+    width: 200px;
+    left: 33% !important;
+    bottom: 29% !important;
+  }
 }
 
 i.v-icon.v-icon {
-  color: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d) !important;
-} 
+  color: linear-gradient(
+    45deg,
+    #405de6,
+    #5851db,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d
+  ) !important;
+}
 </style>

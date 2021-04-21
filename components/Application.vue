@@ -1,46 +1,13 @@
 <template lang="pug">
-  v-form( 
-    class="form" 
-    ref="form"
-    v-model="valid"
-    lazy-validation
-  )
-    v-text-field(
-      label="Ваше имя"
-      v-model="name"
-      :rules="nameRules"
-      required
-    )
-    v-text-field(
-      label="Ваш Email" 
-      v-model="email" 
-      :rules="emailRules"
-      required
-    )
-    v-textarea(
-      label="Ваше сообщение"
-      v-model="other"
-      no-resize
-      rows="3"
-      row-height="25"
-      counter
-      required
-    )
-    v-radio-group( v-model="type" mandatory row )
-      template( v-slot:label )
-        div Выберите тип 
-          strong заявки
-      v-radio(
-        label="Заявка на вакансию"
-        value="работа"
-        color="blue"
-      )
-      v-radio(
-        label="Заявка на анкету"
-        value="анкета"
-        color="success"
-      )
-    v-btn( rounded large @click="validate" :disabled="!valid" color="#AA00FF" class="white--text" ) Оставить заявку
+v-form( v-model="valid" ref="form" lazy-validation )
+  v-text-field( class="field" elevation="0" background-color="#783a82"  solo dense placeholder="Имя" v-model="name" :rules="nameRules" required )
+  v-text-field( class="field" elevation="0" background-color="#783a82"  solo dense placeholder="Email" v-model="email" :rules="emailRules" required )
+  v-btn( @click="cooperation = true; search = false" elevation="0" class="text-capitalize text-caption" v-bind:color="cooperation ? '#fdb3e4' : '#783a82'" ) Сотрудничество
+  v-btn( @click="cooperation = false; search = true" elevation="0" class="text-capitalize text-caption" v-bind:color="search ? '#fdb3e4' : '#783a82'" ) Поиск жениха
+  //- v-text-field( class="field mt-6" elevation="0" color="#a174a7" background-color="#783a82"  solo dense placeholder="Комментарий" v-model="comment" )
+  v-textarea( class="field mt-6" elevation="0" background-color="#783a82" no-resize rows="2" solo dense placeholder="Комментарий" v-model="comment" )
+  v-btn( @click="validate" color="#fdc2f7" elevation="0" class="mb-8" block :disabled="!valid" )
+    span( class="text-title text-capitalize" ) Отправить
 </template>
 
 <script>
@@ -54,41 +21,55 @@ const typeEmoji = '\u2753'
 const otherEmoji = '\ud83d\udcac'
 
 export default {
-  name: 'Application',
-
   data: function () {
     return {
-      valid: true,
       name: '',
-      nameRules: [ v => !!v || 'Имя обязательно!' ],
       email: '',
+      comment: '',
+      cooperation: true,
+      search: false,
+      valid: true,
+      nameRules: [ v => !!v || 'Имя обязательно' ],
       emailRules: [
-        v => !!v || 'E-mail обязателен!',
-        v => /.+@.+\..+/.test(v) || 'Введите корректный E-mail',
+        v => !!v || 'E-mail обязателен',
+        v => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'Некорректный E-mail',
       ],
-      other: '',
-      type: ''
     }
   },
 
   methods: {
     validate: async function () {
       let valid = this.$refs.form.validate()
-      if (valid) this.send()
+      if (valid) await this.send()  
     },
     send: async function () {
       let emoji = (this.type == 'анкета') ? '\ud83d\udc69' : '\ud83d\udcbb'
-      let type = `${this.type} ${emoji}`
-      let message = `Новая заявка с сайта ${cardEmoji}%0A%0A${nameEmoji} Имя: ${this.name}%0A${emailEmoji} Email: ${this.email}%0A${typeEmoji} Тип заявки: ${type}%0A${otherEmoji} Дополнение: ${this.other}%0A`
+      let type = `${this.cooperation ? 'Сотрудничество' : 'Поиск жениха'} ${emoji}`
+      let message = `Новая заявка с сайта ${cardEmoji}%0A%0A${nameEmoji} Имя: ${this.name}%0A${emailEmoji} Email: ${this.email}%0A${typeEmoji} Тип заявки: ${type}%0A${otherEmoji} Комментарий: ${this.comment}%0A`
       let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${message}`
       await this.$axios.$get(url)
-    },
-  },
+      this.$refs.form.resetValidation()
+      this.$refs.form.reset()
+    }
+  }
 }
 </script>
 
 <style>
-@media screen and (max-device-width: 1500px) {
-  .form {max-width: 650px;}
+.application-form {
+  padding-top: 240px;
+}
+
+.application-form span {
+  color: #4e1f66;
+  font-size: 16px !important;
+}
+
+.field input, .field input::placeholder{
+  color: #a174a7 !important;
+}
+
+.field textarea, .field textarea::placeholder{
+  color: #a174a7 !important;
 }
 </style>
